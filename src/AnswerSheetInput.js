@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-const addAnswer = () => {
-  console.log("Add answer");
-};
+
 
 export default function () {
   const [type, setType] = useState("SELECT");
   const [allAns, setAllAns] = useState(<div></div>);
   const [choiceNumInput, setChoiceNumInput] = useState(4);
+  const [questionNum, setQuestionNum] =  useState(1)
   useEffect(() => {
     console.log("add question");
   }, allAns);
+
+
+  const addAnswer = () => {
+    console.log("Add answer");
+    setQuestionNum(prev => parseInt(prev) + 1)
+  };
+
+
   return (
     <div>
       <button
@@ -34,6 +41,8 @@ export default function () {
         Add
       </button>
       <div>
+      <p>Displayed choice number:</p>
+      <input type="number" name="questionNnumber" value = {questionNum} onChange = {(e) => {setQuestionNum(parseInt(e.target.value))}} />
         <p>Question type: {type}</p>
         {type === "SELECT" ? (
           <div>
